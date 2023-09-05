@@ -35,7 +35,7 @@ export const TaskStatus = ({task,task_status}) => {
             <Stack alignItems={'center'}>
                 <Heading fontSize={'xl'}>{task_status.toUpperCase()}</Heading>
             </Stack>
-            <Stack>
+            <Stack spacing={4}>
                 {task.length>0 && task.filter((task)=>task.tasks_status==task_status).filter(filterByParamTag).map((task,ind)=><TaskCard key={ind} {...task}/>)}
             </Stack>
 

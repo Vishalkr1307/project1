@@ -15,18 +15,18 @@ export const Home = () => {
   },[task])
   
   return (
-    <Box>
-      <Stack direction={'row'} justifyContent={'space-evenly'} minH={'100vh'} spacing={4}>
-        <Box border={'1px solid green'} width={'200px'} >
+    <Box width={'80vw'}>
+      <Stack direction={{base:'column' ,md:'row'}} justifyContent={'space-around'} minH={'100vh'} spacing={8}>
+        <Box >
           <TaskStatus task={task} task_status={"todo"}/>
         </Box>
-        <Box border={'1px solid green'} width={'200px'}>
+        <Box  maxW={'-moz-fit-content'} >
        
          <TaskStatus task={task} task_status={"in-progress"}/>
 
 
         </Box>
-        <Box border={'1px solid green'} width={'200px'}>
+        <Box   maxW={'-moz-fit-content'} >
         <TaskStatus task={task} task_status={"done"}/>
 
 

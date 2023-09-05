@@ -6,7 +6,7 @@ import { Register } from './Register'
 import { VerifyOtp } from '../component/VerifyOtp'
 import { Forgetpassword } from '../component/Forgetpassword'
 import { ResetPassword } from '../component/ResetPassword'
-import { Stack } from '@chakra-ui/react'
+import { Box, HStack, Stack } from '@chakra-ui/react'
 import { SideBar } from '../component/SideBar'
 import { EditTask } from '../component/EditTask'
 import { Task } from './Task'
@@ -17,11 +17,19 @@ export const AllRoute = () => {
   return (
   
         <Routes>
-            <Route path='/' element={<Stack direction={'row'}>
+            <Route path='/' element={<Stack direction={'column'}>
               <ReqAuth>
 
-              <SideBar/>
-              <Home/>
+              {/* <SideBar/> */}
+              <Navbar/>
+              <HStack alignItems={'center'} justifyContent={'space-around'}>
+
+                <Box display={{base:"none",md:'flex'}} px={4}>
+                <SideBar/>
+
+                </Box>
+                <Home/>
+              </HStack>
               </ReqAuth>
             </Stack>}/>
             <Route path='/auth/login' element={<Login/>}/>
@@ -30,7 +38,7 @@ export const AllRoute = () => {
             <Route path='/auth/verifyotp/:id' element={<VerifyOtp/>}/>
             <Route path='/auth/register' element={<Register/>}/>
             <Route path='/task' element={<Task/>}/>
-            <Route path='/navbar' element={<Navbar/>}/>
+            {/* <Route path='/navbar' element={<Navbar/>}/> */}
             <Route path='/task/:id' element={<Stack direction={'row'}>
               <SideBar/>
               <EditTask/>

@@ -8,7 +8,7 @@ export const TaskCard = ({_id,title,tags,description,tasks_status,subTasks}) => 
 
   return (
     <Box>
-        <Stack spacing={4} px={4} >
+        <Stack spacing={4} mb={4} px={4} >
             <Flex justifyContent={'space-between'} alignItems={'center'} >
                 <Text>{title}</Text>
                 <Link to={`/task/${_id}`}><EditIcon/></Link>
