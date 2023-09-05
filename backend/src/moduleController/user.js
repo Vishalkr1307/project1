@@ -39,6 +39,7 @@ router.post("/register",createEmailChain(),createPasswordChain(),async (req,res)
 
     }
     catch(err){
+        console.log(err)
         return res.status(400).send("Bad request")
     }
 })
@@ -63,6 +64,7 @@ router.post("/login",createEmailChain(),async (req,res)=>{
         if(!matchPassword){
             return res.status(400).send(" passwords do not match")
         }
+        
         const sentMail=await SentMail(user._id.toString(),user.email,user.name)
         
 
@@ -74,12 +76,12 @@ router.post("/login",createEmailChain(),async (req,res)=>{
 
     }
     catch(err){
-        // console.log(err)
+        
         res.status(400).send("Bad request")
     }
 })
 
-router.post("/login/verifyotp/:id",async (req,res)=>{
+router.post("/verifyotp/:id",async (req,res)=>{
     try{
         const {otp}=req.body
         const userId=req.params.id
@@ -127,7 +129,7 @@ router.post("/login/verifyotp/:id",async (req,res)=>{
         return res.status(400).send("Bad request")
     }
 })
-router.post("/login/resendverifyotp",async (req,res)=>{
+router.post("/resendverifyotp",async (req,res)=>{
     try{
         const {userId,email,name}=req.body
 

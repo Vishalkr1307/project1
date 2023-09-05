@@ -67,7 +67,10 @@ module.exports=async (id,email,name)=>{
         html:emailBody
 
 
-    })
+    }
+    )
+    
+    
     return {status:`opt send to ${email}`,userId:id,email:email,name:name}
 
 }
