@@ -1,13 +1,19 @@
 import { Avatar, Box, Button, Flex, HStack, IconButton, Menu, MenuButton, MenuItem, MenuList, Stack, useColorModeValue, useDisclosure } from '@chakra-ui/react'
-import React from 'react'
+import React, { useEffect } from 'react'
 import {AddIcon, CloseIcon,HamburgerIcon} from "@chakra-ui/icons"
 import { SideBar } from './SideBar'
 import { Link } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { postProfileData } from '../redux/auth/action'
 
 export const Navbar = () => {
   const {isOpen,onOpen,onClose}=useDisclosure()
+  const {token}=useSelector((store)=>store.auth)
+  const dispatch=useDispatch()
   const bgCOlor=useColorModeValue('gray.100','gray.900')
   const links=['home', 'about', 'service','contact']
+
+  
 
   return (
     <Box bg={bgCOlor} px={4}>
@@ -15,7 +21,9 @@ export const Navbar = () => {
           <Flex h={16} alignItems={'center'} justify={'space-between'}>
             <IconButton size={'md'} icon={isOpen?<CloseIcon/>:<HamburgerIcon/>} onClick={isOpen?onClose:onOpen} display={{md:'none'}}/>
             <HStack spacing={8}>
-              <Box>logo</Box>
+              <Link to={'/'}>
+                <Box>logo</Box>
+              </Link>
               <HStack spacing={4}  display={{base:"none",md:"flex"}}>
                 {/* {links.length>0 && links.map((item,ind)=><NavLink key={ind}>{item}</NavLink>)} */}
                 <Link to={'/task'}><Button colorScheme='teal' leftIcon={<AddIcon/>}>Add-task</Button></Link>

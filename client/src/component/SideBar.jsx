@@ -6,7 +6,7 @@ import { getTaskData } from '../redux/app/action'
 
 export const SideBar = () => {
     const {task}=useSelector((store)=>store.app)
-    const {user}=useSelector((store)=>store.app)
+    const {user,profile}=useSelector((store)=>store.app)
     const dispatch=useDispatch()
     const All=task.length
     const personal=task.filter((task)=>task.tags.includes("personal")).length
@@ -48,7 +48,7 @@ export const SideBar = () => {
     <Box  width={'200px'} height={'80vh'} px={2}>
         <Stack>
             <Box height={'200px'}>
-                <Text>{user?user.name:"Profile-detail"}</Text>
+                <Text>{profile?profile.name:"Profile-detail"}</Text>
             </Box>
             <Box  height={'250px'}>
                 <Stack>

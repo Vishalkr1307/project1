@@ -1,8 +1,10 @@
 
 
+import { Stack } from '@chakra-ui/react';
 import { LandingPage } from './component/LandingPage';
 import { AllRoute } from './page/AllRoute';
 import { useEffect, useState } from 'react';
+import { Navbar } from './component/Navbar';
 
 function App() {
   const [loading,setLoading]=useState(true)
@@ -15,7 +17,11 @@ function App() {
   return (
     <>
       {/* {loading && <LandingPage/>} */}
+      <Stack>
+      <Navbar/>
+
        <AllRoute/>
+      </Stack>
     </>
   );
 }

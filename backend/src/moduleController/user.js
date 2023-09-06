@@ -1,5 +1,6 @@
 const express=require("express")
 const router=express.Router()
+const jwt=require("jsonwebtoken")
 const User=require("../module/user")
 const {body,validationResult}=require("express-validator")
 const formatOfError=require("../util/valadation")
@@ -8,6 +9,7 @@ const SentMail=require("..//util/sentMail")
 const OtpVerification=require("..//module/otpVerification")
 const bcrypt=require("bcrypt")
 const passport=require("..//config/passport")
+require("dotenv").config()
 passport.serializeUser(({user,token},done)=>{
     done(null,{user,token})
 
@@ -116,7 +118,8 @@ router.post("/verifyotp/:id",async (req,res)=>{
                 return res.status(200).send({
                     status:"Verified successfully",
                     message:"user email verified successfully",
-                    token
+                    token,
+                    user
                 })
             }
         }
@@ -129,6 +132,7 @@ router.post("/verifyotp/:id",async (req,res)=>{
         return res.status(400).send("Bad request")
     }
 })
+
 router.post("/resendverifyotp",async (req,res)=>{
     try{
         const {userId,email,name}=req.body

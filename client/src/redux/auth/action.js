@@ -103,3 +103,4 @@ export const postResetPasswordData=(id,payload)=>(dispatch)=>{
     dispatch(addRestPasswordRequest())
     axios.patch(`/auth/login/forgetpassword/resetpassword/${id}`,payload).then((res)=>dispatch(addRestPasswordSuccess(res.data))).catch((err)=>dispatch(addRestPasswordFailure(err.response.data)))
 }
+

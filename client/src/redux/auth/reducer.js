@@ -9,7 +9,8 @@ const init={
     user:{},
     verifyStatus:"",
     forgetPassword:false,
-    resetPassword:""
+    resetPassword:"",
+    profile:{},
     
 
 }
@@ -33,7 +34,8 @@ export const authReducer=(store=init,{type,payload})=>{
             return {...store,isLoading:true}
         case ADD_VERIFY_OTP_SUCCESS:
             postLocaldat("token",payload.token)
-            return {...store,isLoading:false,token:payload.token,isAuth:true,verifyStatus:payload.status,isError:false,forgetPassword:true}
+            // postLocaldat("profile",payload.user)
+            return {...store,isLoading:false,token:payload.token,profile:payload.user,isAuth:true,verifyStatus:payload.status,isError:false,forgetPassword:true}
         case ADD_VERIFY_OTP_FAILURE:
             return {...store,isLoading:false,isAuth:false,isError:payload}
         case ADD_FORGET_PASSWORD_REQUEST:

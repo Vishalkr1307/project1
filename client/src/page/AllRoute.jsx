@@ -21,7 +21,7 @@ export const AllRoute = () => {
               <ReqAuth>
 
               {/* <SideBar/> */}
-              <Navbar/>
+              {/* <Navbar/> */}
               <HStack alignItems={'center'} justifyContent={'space-around'}>
 
                 <Box display={{base:"none",md:'flex'}} px={4}>
